@@ -4,7 +4,7 @@ import model.entities.Seller;
 
 import java.util.List;
 
-public interface SellerDAO {
+public interface SellerDao {
 
     void insert(Seller obj);
     void update(Seller obj);
