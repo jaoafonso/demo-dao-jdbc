@@ -23,6 +23,7 @@ public class SellerDaoJDBC implements SellerDao {
     @Override
     public void insert(Seller obj) {
         PreparedStatement st = null;
+
         try {
             st = conn.prepareStatement(
                     "INSERT INTO seller "
@@ -61,6 +62,7 @@ public class SellerDaoJDBC implements SellerDao {
     @Override
     public void update(Seller obj) {
         PreparedStatement st = null;
+
         try {
             st = conn.prepareStatement(
                     "UPDATE seller "
@@ -86,7 +88,21 @@ public class SellerDaoJDBC implements SellerDao {
 
     @Override
     public void deleteById(Integer id) {
+        PreparedStatement st = null;
 
+        try {
+            st = conn.prepareStatement("DELETE FROM seller WHERE Id = ?");
+
+            st.setInt(1, id);
+
+            st.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatment(st);
+        }
     }
 
     @Override
