@@ -1,5 +1,6 @@
 package application;
 
+import db.DB;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -9,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class Program {
+public class SellerProgram {
 
     public static void main(String[] args) {
 
@@ -48,5 +49,6 @@ public class Program {
         System.out.println("Delete completed");
 
         sc.close();
+        DB.closeConnection();
     }
 }
